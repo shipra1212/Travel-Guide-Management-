@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="guide.xsl"?>
+<Travel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="guide.xsd">
+
+   <Guide>
+    <guideid>1234</guideid>
+    <guideName>Amit</guideName>
+    <source>BLR</source>
+    <destination>AMD</destination>
+    <fare>4900</fare>
+    <noofplaces>32</noofplaces>
+   </Guide>
+
+
+   <Guide>
+    <guideid>2345</guideid>
+    <guideName>Aman</guideName>
+    <source>BLR</source>
+    <destination>BOM</destination>
+    <fare>5200</fare>
+    <noofplaces>45</noofplaces>
+   </Guide>
+
+   <Guide>
+    <guideid>3456</guideid>
+    <guideName>Anisha</guideName>
+    <source>CAL</source>
+    <destination>DEL</destination>
+    <fare>4900</fare>
+    <noofplaces>17</noofplaces>
+   </Guide>
+
+   <Guide>
+    <guideid>4567</guideid>
+    <guideName>Amartya</guideName>
+    <source>CAL</source>
+    <destination>HYD</destination>
+    <fare>3900</fare>
+    <noofplaces>30</noofplaces>
+   </Guide>
+ 
+   <Guide>
+    <guideid>5678</guideid>
+    <guideName>Vikas</guideName>
+    <source>HYD</source>
+    <destination>DEL</destination>
+    <fare>3900</fare>
+    <noofplaces>22</noofplaces>
+   </Guide>
+
+   <Guide>
+    <guideid>6789</guideid>
+    <guideName>James</guideName>
+    <source>CAL</source>
+    <destination>DEL</destination>
+    <fare>4900</fare>
+    <noofplaces>32</noofplaces>
+   </Guide>
+
+   <Guide>
+    <guideid>7890</guideid>
+    <guideName>Aanchal</guideName>
+    <source>CAL</source>
+    <destination>HYD</destination>
+    <fare>2800</fare>
+    <noofplaces>12</noofplaces>
+   </Guide>
+
+   <Guide>
+    <guideid>3456</guideid>
+    <guideName>Anisha</guideName>
+    <source>AMD</source>
+    <destination>DEL</destination>
+    <fare>3100</fare>
+    <noofplaces>15</noofplaces>
+   </Guide>
+
+</Travel>

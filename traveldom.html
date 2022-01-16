@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Parser</title>
+    <style>
+        h1{
+            align-items: center;
+            text-align: center;
+            background-color: #00ff84;
+        }
+        button{
+            width: 100px;
+            height: 80px;
+            margin-left: 250px;
+            background-color: #ff00aa;
+            border-radius: 05px;
+        }
+        button:hover{
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Guide</h1>
+    <p><button onclick="loadxmldoc()">Travel Management</button></p>
+
+    <table id="guideid" border="1">
+        <tr>
+            <th>cguideid</th>
+            <th>guideName</th>
+            <th>source</th>
+            <th>destination</th>
+            <th>fare</th>
+            <th>noofplaces</th>
+        </tr>
+    </table>
+
+    <script>
+        function loadxmldoc(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function(){
+                if (this.readyState == 4 && this.status == 200){
+                    myFunction(this);
+                }
+            };
+            xmlhttp.open("GET","travel.xml",true);
+            xmlhttp.send();
+        }
+        function myFunction(xml){
+            var x, i, xmlDoc, table;
+            xmlDoc = xml.responseXML;
+            table = "<tr><th>guideid</th><th>guideName</th><th><source></th><th><destination></th><th><fare></th><th><noofplaces></th></tr>";
+            x = xmlDoc.getElementsByTagName("Guide")
+            for (i = 0; i < x.length; i++){
+                table += "<tr><td>"+
+                    x[i].getElementsByTagName("guideid")[0].childNodes[0].nodeValue + "</td><td>"+ 
+                    x[i].getElementsByTagName("guideName")[0].childNodes[0].nodeValue + "</td></tr>" +
+                    x[i].getElementsByTagName("source")[0].childNodes[0].nodeValue + "</td></tr>"+
+                    x[i].getElementsByTagName("destination")[0].childNodes[0].nodeValue + "</td></tr>"+
+                    x[i].getElementsByTagName("fare")[0].childNodes[0].nodeValue + "</td></tr>"+
+                    x[i].getElementsByTagName("noofplaces")[0].childNodes[0].nodeValue + "</td></tr>";
+            }
+            document.getElementById("guideid").innerHTML = table;
+        }
+    </script>
+</body>
+</html>
