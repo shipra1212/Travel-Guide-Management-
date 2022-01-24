@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Parser</title>
+    <style>
+        h1 {
+            align-items: center;
+            text-align: center;
+            background-color: #ff00aa;
+        }
+
+        button {
+            width: 200px;
+            height: 80px;
+            margin-left: 500px;
+            background-color: #ff00aa;
+            border-radius: 30px;
+        }
+
+        button:hover {
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        var xmlDoc;
+        function loadxmldoc() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    xmlDoc = this.responseXML;
+                    myFunction();
+                }
+            };
+            xmlhttp.open("GET", "travel.xml", true);
+            xmlhttp.send();
+        }
+        function myFunction(xml, action) {
+
+            var x, i, table;
+
+            if (action == "delete") {
+                y = xmlDoc.getElementsByTagName('Guide')[0];
+                xmlDoc.documentElement.removeChild(y);
+                alert('The Element has been removed!');
+            }
+            if (action == "create") {
+                a = prompt("Enter guideid");
+                b = prompt("Enter guideName");
+                c = prompt("Enter source");
+                d = prompt("Enter destination");
+                e = prompt("fare");
+                f = prompt("noofplaces");
+
+
+                var i
+                var details = []
+                Guide = xmlDoc.createElement("Guide")
+                details[0] = xmlDoc.createElement("guideid");
+                details[0].appendChild(xmlDoc.createTextNode(a))
+                Guide.appendChild(details[0])
+                details[1] = xmlDoc.createElement("guideName")
+                details[1].appendChild(xmlDoc.createTextNode(b))
+                Guide.appendChild(details[1])
+                details[2] = xmlDoc.createElement("source")
+                details[2].appendChild(xmlDoc.createTextNode(c))
+                Guide.appendChild(details[2])
+                details[3] = xmlDoc.createElement("destination")
+                details[3].appendChild(xmlDoc.createTextNode(d))
+                Guide.appendChild(details[3])
+                details[4] = xmlDoc.createElement("fare")
+                details[4].appendChild(xmlDoc.createTextNode(e))
+                Guide.appendChild(details[4])
+                details[5] = xmlDoc.createElement("noofplaces")
+                details[5].appendChild(xmlDoc.createTextNode(f))
+                Guide.appendChild(details[5])
+
+
+                xmlDoc.documentElement.appendChild(Guide);
+            }
+            if (action == "edit") {
+
+                i = parseInt(prompt("Enter index to change")) - 1;
+                a = prompt("Enter guideid");
+                b = prompt("Enter guideName");
+                c = prompt("Enter source");
+                d = prompt("Enter destination");
+                e = prompt("Enter fare");
+                f = prompt("noofplaces");
+                xmlDoc.getElementsByTagName("Guide")
+                [i].getElementsByTagName("guideid")[0].firstChild.nodeValue = a
+
+                xmlDoc.getElementsByTagName("Guide")
+                [i].getElementsByTagName("guideName")[0].firstChild.nodeValue = b
+
+                xmlDoc.getElementsByTagName("Guide")
+                [i].getElementsByTagName("source")[0].firstChild.nodeValue = c
+
+                xmlDoc.getElementsByTagName("Guide")
+                [i].getElementsByTagName("destination")[0].firstChild.nodeValue = d
+
+                xmlDoc.getElementsByTagName("Guide")
+                [i].getElementsByTagName("fare")[0].firstChild.nodeValue = e
+
+                xmlDoc.getElementsByTagName("Guide")
+                [i].getElementsByTagName("noofplaces")[0].firstChild.nodeValue = f
+            }
+
+            table = "<tr><th>guideid</th><th>guideName</th><th>source</th><th>destination</th><th>fare</th><th>noofplaces</th></tr>";
+            x = xmlDoc.getElementsByTagName("Guide")
+            for (i = 0; i < x.length; i++) {
+                table += "<tr><td>" +
+                    x[i].getElementsByTagName("guideid")[0].childNodes[0].nodeValue + "</td><td>" +
+                    x[i].getElementsByTagName("guideName")[0].childNodes[0].nodeValue + "</td><td>" +
+                    x[i].getElementsByTagName("source")[0].childNodes[0].nodeValue + "</td><td>" +
+                    x[i].getElementsByTagName("destination")[0].childNodes[0].nodeValue + "</td><td>" +
+                    x[i].getElementsByTagName("fare")[0].childNodes[0].nodeValue + "</td><td>" +
+                    x[i].getElementsByTagName("noofplaces")[0].childNodes[0].nodeValue + "</td></tr>";
+
+
+            }
+            document.getElementById("demo").innerHTML = table;
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Guide</h1>
+    <p><button onclick="loadxmldoc()">Guide Management</button></p>
+
+    <table id="demo" border="1">
+        <tr>
+            <th>guideid</th>
+            <th>guideName</th>
+            <th>source</th>
+            <th>destination</th>
+            <th>fare</th>
+            <th>noofplaces</th>
+        </tr>
+    </table>
+
+    <input type="button" value="Remove" onclick="myFunction(xmlDoc,'delete')" />
+    <input type="button" value="Add" onclick="myFunction(xmlDoc,'create')" name="add" />
+    <input type="button" value="Edit" onclick="myFunction(xmlDoc,'edit')" name="edit" />
+
+</body>
+
+</html>
