@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    
+    
+    <title>Document</title>
+
+    <script>
+    function test(event)
+        {
+            let code=event.which;
+            if(code>47&&code<58)
+            return false;
+            else
+            return true;
+        }
+      function ValidateEmail() {
+        var validRegex = /^([a-zA-Z0-9]{8,20}@(christuniversity.in))$/;
+        if (document.form1.email.value.match(validRegex)) {
+              alert("Valid email address!");
+              document.form1.email.focus();
+              return true;
+            } else {
+              alert("Invalid email address!");
+              document.form1.email.focus();
+              return false;
+            }
+          }
+      function ValidateNum() {
+        var validnum = /^(?:(?:\+|0{0,2})91(\s*|[\-])?|[0]?)?([6789]\d{2}([ -]?)\d{3}([ -]?)\d{4})$/;
+        if (document.form1.number.value.match(validnum)){
+          alert("Valid number");
+          document.form1.number.focus();
+          return true;
+        } else {
+          alert("Invalid number");
+          document.form1.number.focus();
+          return false;
+        }
+      }
+      function ValidateName() {
+        var validName = /(^[A-Za-z]{3,16})([ ]{0,1})([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})/;
+        if (document.form1.name.value.match(validName)) {
+              alert("Valid Name!");
+              document.form1.name.focus();
+              return true;
+            } else {
+              alert("Invalid Name!");
+              document.form1.name.focus();
+              return false;
+            }
+          }
+      function ValidatePass() {
+        var validPass = /(^(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,})/;
+        if (document.form1.pass1.value.match(validPass)) {
+              alert("Valid Password!");
+              document.form1.pass1.focus();
+              return true;
+            } else {
+              alert("Invalid Password!");
+              document.form1.pass1.focus();
+              return false;
+            }
+          }
+      function matchPassword() {  
+        var pw1 = document.getElementById("pass1").value;  
+        var pw2 = document.getElementById("pass2").value;  
+        if(pw1 != pw2)  
+        {   
+          alert("Passwords did not match");  
+        } else {  
+          alert("Password created successfully");  
+        }  
+      }  
+    
+    function buttonState(){
+        if(ValidateEmail()  && ValidateName() && ValidateNum() && ValidatePass() && matchPassword() )
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
+    function WriteCookie() {
+               if( document.form1.name.value == "" ) {
+                  alert("Enter some name!");
+                  return;
+               }
+               if( document.form1.email.value == "" ) {
+                  alert("Enter some email!");
+                  return;
+               }
+               if( document.form1.number.value == "" ) {
+                  alert("Enter some number!");
+                  return;
+               }
+               if( document.form1.pass1.value == "" ) {
+                  alert("Enter some password!");
+                  return;
+               }
+               if( document.form1.add.value == "" ) {
+                  alert("Enter some address!");
+                  return;
+               }
+               cookievaluename = escape(document.form1.name.value) + ";";
+               cookievalueemail = escape(document.form1.email.value) + ";";
+               cookievaluenum = escape(document.form1.number.value) + ";";
+               lsvaluepass = escape(document.form1.pass1.value) + ";";
+               ssvalueadd = escape(document.form1.add.value) + ";";
+               sessionStorage.setItem("Address:",ssvalueadd);
+               localStorage.setItem("Password:",lsvaluepass);
+               document.cookie = "name=" + cookievaluename ;"expires= + Sat, 05 Feb 2022 12:00:00 UTC"; 
+               document.cookie = "email=" + cookievalueemail;"expires= + Sat, 06 Feb 2022 12:00:00 UTC"; 
+               document.cookie = "number=" + cookievaluenum; 
+               document.write ("Setting Cookies : " + "name=" + cookievaluename );
+               document.write("<br>");
+               document.write ("Setting Cookies : " + "email=" + cookievalueemail);
+               document.write("<br>");
+               document.write ("Setting Cookies : " + "number=" + cookievaluenum);
+               document.write("<br>");
+               document.write("Setting Local storage: " + "Password=" + lsvaluepass);
+               document.write("<br>");
+               document.write("Setting session storage: " + "Address=" + ssvalueadd);
+               //Display or read cookies
+               var allcookies = document.cookie;
+               document.write ("<br>" + "All Cookies : " + allcookies + "<br>" );
+               cookiearray = allcookies.split(';');
+               for(var i=0; i<cookiearray.length; i++) {
+                  name = cookiearray[i].split('=')[0];
+                  value = cookiearray[i].split('=')[1];
+                  document.write ("Key is : " + name + " and Value is : " + value);
+                  document.write("<br>");
+               }
+          }
+            function RemoveCookie()
+            {
+               var now = new Date();
+               now.setMonth( now.getMonth() - 1 );
+               cookievalue = escape(document.form1.name.value) + ";"
+               
+               document.cookie="name=" + cookievalue;
+               document.cookie = "expires=" + now.toUTCString() + ";"
+               document.write ("Removing Cookies : " + "name=" + cookievalue );
+            }
+            
+  </script>
+</head>
+<body>
+    <form name="form1" action="#" style="text-align:Center">
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <input type="text" name="name" class="form-control"  id="name" placeholder="Your Name" onkeypress="return test(event)"  >
+          </div>
+          <div class="col-md-6 form-group mt-3 mt-md-0 form-group mt-3">
+            <input type="email"  class="form-control" name="email" id="email" placeholder="Your Email"  >
+            <span></span>
+          </div>
+          <div class="form-group mt-3">
+              <input type="number" class="form-control"  name="number" id="number" placeholder="Your Mobile Number" maxlength="10"  >
+              <span></span>
+          </div>
+        <div class="form-group mt-3">
+          <input type="password" class="form-control" name="pass1" id="pass1" placeholder="Create Password"  >
+        </div>
+        <div class="form-group mt-3">
+          <input type="password" class="form-control"  name="pass2" id="pass2" placeholder="Confirm Password" >
+        </div>
+        <div class="form-group mt-3">
+          <textarea  name="address" id="add" class="form-control" rows="5" placeholder="Address" ></textarea>
+        </div>
+        <div class="my-3"></div>
+        <div class="text-center">
+            <button type="submit" onclick="buttonState()" class="btn btn-outline-success">
+            Register</button>
+        </div>
+        <div class="text-center">
+          <button type="submit" onclick="WriteCookie()" class="btn btn-outline-success">
+          Cookies</button>
+      </div>
+      <div class="text-center">
+        <button type="submit" value="Get Cookie" onclick="RemoveCookie()" class="btn btn-outline-success">
+        Remove Cookies</button>
+    </div>
+    
+</body>
+</html>
