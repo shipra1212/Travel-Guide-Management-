@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gateways</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        body {
+            display: flex;
+            background: linear-gradient(135deg, #79d1ec, #058af7 );
+        }
+
+        header {
+            background-color: rgb(237, 100, 100);
+            height: 70px;
+            display: flexbox;
+        }
+
+        header .navbar {
+            display: flexbox;
+        }
+
+        header .navbar ul {
+            display: flex;
+        }
+
+        header .navbar ul li {
+            display: flex;
+            list-style: none;
+        }
+
+        header .navbar ul li {
+            text-decoration: none;
+            list-style: none;
+        }
+
+        header .navbar ul li a {
+            text-decoration: none;
+            list-style: none;
+            color: white;
+            padding: 20px;
+            font-size: 3vh;
+        }
+
+        header .navbar ul li a:hover {
+            background-color: wheat;
+            color: black;
+        }
+
+        #student {
+            margin-left: 90px;
+            background-color: rgb(21, 78, 233);
+        }
+
+        #student a {
+            color: black;
+        }
+
+        section {
+            
+            width: 50%;
+            margin-top: 100px;
+            margin-left: -25%;
+            padding: 20px;
+            font-size: 3vh;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Registration</a></li>
+                <li id="student"><a href="#">Get student details</a></li>
+            </ul>
+        </div>
+    </header>
+    <section>
+        <form action="">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <br>
+                <input type="text" id="name" placeholder="Enter your full name"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z.]/g, '').replace(/(\..*)\./g, '$1')">
+                <span></span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <br>
+                <input type="text" id="email" placeholder="Enter your christ email id">
+                <span></span>
+            </div>
+            <div class="form-group">
+                <label for="branch">Branch:</label>
+                <br>
+                <input type="text" id="branch" placeholder="Enter your branch">
+                <span></span>
+            </div>
+            <div class="form-group">
+                <label for="college">College/University:</label>
+                <br>
+                <input type="text" id="college" placeholder="Enter your college/university">
+                <span></span>
+            </div>
+            <div class="form-group">
+                <label for="state">State:</label>
+                <br>
+                <input type="text" id="state" placeholder="Enter your state">
+                <span></span>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <br>
+                <input type="text" id="address" placeholder="Enter your full address">
+                <span></span>
+            </div>
+            <div class="form-group">
+                <label for="age">Please select your age:</label>
+                <br>
+                <select name="age" id="age">
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19"></option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile No:</label>
+                <br>
+                <input type="number" id="mobile" placeholder="Enter your mobile number:">
+                <span></span>
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <br>
+                <input type="text" id="username" placeholder="Enter your username">
+                <span></span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <br>
+                <input type="password" id="password" placeholder="Enter your password">
+                <span></span>
+            </div>
+
+        </form>
+    </section>
+</body>
+
+</html>
+<script>
+    var username = document.getElementById("username");
+    var email = document.getElementById("email");
+    var mobile = document.getElementById("mobile");
+    var password = document.getElementById("password");
+    var span = document.getElementsByTagName("span")
+
+    email.onkeydown = function () {
+        const regex1 = /^([a-z0-9\.-]+)@([christuniversity]+)\.([a-z]{1,8})$/;
+        if (regex1.test(email.value)) {
+            span[1].innerText = "Your email is a valid email";
+            span[1].style.color = "green";
+        }
+        else {
+            span[1].innerText = "Your email is invalid one";
+            span[1].style.color = "red";
+        }
+    }
+    mobile.onkeydown = function () {
+        const regex2 = /^[0-9]{9}$/;
+        if (regex2.test(mobile.value)) {
+            span[6].innerText = "Your mobile number is valid";
+            span[6].style.color = "green";
+        }
+        else {
+            span[6].innerText = "Your mobile number is invalid, check the number of digits";
+            span[6].style.color = "red";
+        }
+    }
+    username.onkeydown = function () {
+        const regex3 = /^[a-zA-Z]{1,}$/;
+        if (regex3.test(username.value)) {
+            span[7].innerText = "Your username is a valid one";
+            span[7].style.color = "green";
+        }
+        else {
+            span[7].innerText = "Your username is an invalid one";
+            span[7].style.color = "red";
+        }
+    }
+    password.onkeydown = function () {
+        const regex4 = /^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+        if (regex4.test(password.value)) {
+            span[8].innertext = "Your password is now valid";
+            span[8].style.color = "green";
+        }
+        else {
+            span[8].innerText = "Your password is invalid suggestions:- Adity@199!,Yash@988989!";
+            span[8].style.color = "red";
+        }
+    }
+
+
+</script>
