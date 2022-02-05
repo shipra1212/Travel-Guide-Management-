@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <title>CHRIST UNIVERSITY</title>
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <style>
+            h1 {
+                text-align: center;
+            }
+            
+            
+            .main {
+                display: grid;
+                grid-template-columns: 200px auto;
+            }
+            
+            
+            .form-control {
+                width: 100%;
+                background: #fff;
+                padding-bottom: 8px;
+                border-radius: 4px;
+                box-shadow: none;
+                font-size: 14px;
+                border-color: hsl(268, 80%, 40%);
+                height: 44px;
+                padding: 10px 12px;
+            }
+            .form-group {
+                padding-bottom: 8px;
+                border-radius: 4px;
+                box-shadow: none;
+                font-size: 14px;
+                border-color: hsl(268, 80%, 40%);
+                height: 44px;
+                padding: 10px 12px;
+            }
+
+        .form-button[type=submit] {
+                background: hsl(268, 80%, 40%);
+                border: 0;
+                padding: 10px 35px;
+                color: #fff;
+                transition: 0.4s;
+                border-radius: 50px;
+            }
+         .form-button[type=reset] {
+                background: hsl(268, 80%, 40%);
+                border: 0;
+                padding: 10px 35px;
+                color: #fff;
+                transition: 0.4s;
+                border-radius: 50px;
+            }
+            .email-form button[type=submit]:hover {
+                background: hsl(268, 80%, 40%);
+            }
+        span
+            {
+                display: block;
+                margin-left: 20px;
+                color: red;
+                font-style: italic;
+            }
+
+        </style>
+        <script>
+             function loadXMLDoc(xname)
+            {
+                if(window.XMLHttpRequest)
+                {
+                    xhttp=new XMLHttpRequest();
+                }
+                else{
+                    xhttp=new ActiveXObject("Microsoft.XMLHTTP")
+                }
+                xhttp.open("GET",xname,false);
+                xhttp.send();
+            return  xhttp.responseXML;
+            }
+            function show(element)
+            {
+                xmlDoc= loadXMLDoc('student.xml');
+                x=xmlDoc.getElementsByTagName(element);
+                for(i=0;i<x.length;i++)
+                {
+                    document.write(x[i].childNodes[0].nodeValue);
+                    document.write("<br\>");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div><center><img src = "christ-logo1.png" height="180px" width="500px"></center></div>
+        <div class="main">
+            <div>
+                
+            </div>
+           
+            <section style="text-align: center;">
+            <div class="col-lg-8 mt-5 mt-lg-0">
+
+                <div class="row">
+                        <button type="button" class="btn btn-outline-success" onclick="show('Name')">Show</button>
+                </div>
+        </section>
+        </div>
+        <div class="marq">
+            <marquee direction = "right"><b><u>Admission Open For MBA.</u></b></marquee>
+        </div>
+    </body>
+</html>

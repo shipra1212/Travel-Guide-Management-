@@ -1,0 +1,266 @@
+<html>
+    <head>
+        <title>CHRIST UNIVERSITY</title>
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <style>
+            h1 {
+                text-align: center;
+            }
+            
+            
+            .main {
+                display: grid;
+                grid-template-columns: 200px auto;
+            }
+            
+            
+            .form-control {
+                width: 100%;
+                background: #fff;
+                padding-bottom: 8px;
+                border-radius: 4px;
+                box-shadow: none;
+                font-size: 14px;
+                border-color: hsl(268, 80%, 40%);
+                height: 44px;
+                padding: 10px 12px;
+            }
+            .form-group {
+                padding-bottom: 8px;
+                border-radius: 4px;
+                box-shadow: none;
+                font-size: 14px;
+                border-color: hsl(268, 80%, 40%);
+                height: 44px;
+                padding: 10px 12px;
+            }
+
+        .form-button[type=submit] {
+                background: hsl(268, 80%, 40%);
+                border: 0;
+                padding: 10px 35px;
+                color: #fff;
+                transition: 0.4s;
+                border-radius: 50px;
+            }
+         .form-button[type=reset] {
+                background: hsl(268, 80%, 40%);
+                border: 0;
+                padding: 10px 35px;
+                color: #fff;
+                transition: 0.4s;
+                border-radius: 50px;
+            }
+            .email-form button[type=submit]:hover {
+                background: hsl(268, 80%, 40%);
+            }
+        span
+            {
+                display: block;
+                margin-left: 20px;
+                color: red;
+                font-style: italic;
+            }
+
+        </style>
+    <script>
+                function test(event)
+            {
+                let code=event.which;
+                if(code>47&&code<58)
+                return false;
+                else
+                return true;
+            }
+            function ValidateEmail() {
+                var validRegex = /^([a-zA-Z0-9]{8,20}@(christuniversity.in))$/;
+                if (document.form1.email.value.match(validRegex)) {
+                    alert("Valid email address!");
+                    document.form1.email.focus();
+                    return true;
+                } 
+                else 
+                {
+                    alert("Invalid email address!");
+                    document.form1.email.focus();
+                    return false;
+                    }
+            }
+        function ValidateNum() {
+            var validnum = /^(?:(?:\+|0{0,2})91(\s*|[\-])?|[0]?)?([6789]\d{2}([ -]?)\d{3}([ -]?)\d{4})$/;
+            var span=document.getElementsByTagName('span');
+            if (document.form1.number.value.match(validnum)){
+                alert("Valid number");
+                document.form1.number.focus();
+                return true;
+                } 
+            else {
+                alert("Invalid number");
+                document.form1.number.focus();
+                return false;
+                }
+        }
+        function ValidateName() {
+           
+            var validName = /(^[A-Za-z]{3,16})([ ]{0,1})([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})/;
+            var span=document.getElementsByTagName('span');
+            if (document.form1.name.value.match(validName)) {
+                alert("Valid Name!");
+                document.form1.name.focus();
+                return true;
+                } 
+            else {
+                alert("Invalid Name!");
+                document.form1.name.focus();
+                return false;
+                }
+        }
+        function ValidatePass() {
+            var validPass = /(^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,})/;
+            if (document.form1.pass1.value.match(validPass)) {
+                alert("Valid Password!");
+                document.form1.pass1.focus();
+                return true;
+            } 
+            else {
+                alert("Invalid Password!");
+                document.form1.pass1.focus();
+                return false;
+                }
+        }
+        function matchPassword() {  
+            var pw1 = document.getElementById("pass1").value;  
+            var pw2 = document.getElementById("pass2").value;  
+            if(pw1 != pw2)  
+            {   
+            alert("Passwords did not match");  
+            } else {  
+            alert("Password created successfully");  
+            }  
+        }  
+        
+        function buttonState(){
+            if(ValidateEmail()  && ValidateName() && ValidateNum() && ValidatePass() && matchPassword() )
+            {
+                alert("Registerd");  
+                return true
+            }
+            else
+            {
+                return false
+            }
+        }
+        function WriteCookie() {
+               if( document.form1.name.value == "" ) {
+                  alert("Enter some name!");
+                  return;
+               }
+               if( document.form1.email.value == "" ) {
+                  alert("Enter some email!");
+                  return;
+               }
+               if( document.form1.number.value == "" ) {
+                  alert("Enter some number!");
+                  return;
+               }
+               lsvaluenum = escape(document.form1.number.value) + ";";
+               lsvalueemail = escape(document.form1.email.value) + ";";
+               localStorage.setItem("Number:",lsvaluenum);
+               localStorage.setItem("Number:",lsvalueemail);
+               cookievaluename = escape(document.form1.name.value) + ";";
+               cookievalueemail = escape(document.form1.email.value) + ";";
+               document.cookie = "name=" + cookievaluename ; 
+               document.cookie = "email=" + cookievalueemail;
+               document.write ("Setting Cookies : " + "name=" + cookievaluename );
+               document.write("<br>");
+               document.write ("Setting Cookies : " + "email=" + cookievalueemail);
+               document.write("<br>");
+               document.write("Setting Local storage: " + "Number=" + lsvaluenum);
+               document.write("<br>");
+               document.write("Setting Local storage: " + "email=" + lsvalueemail);
+               document.write("<br>");
+            }
+    </script>
+    </head>
+    <body>
+        <div><center><img src = "christ-logo1.png" height="180px" width="500px"></center></div>
+        <div class="main">
+            <div>
+                
+            </div>
+           
+            <section style="text-align: center;">
+            <div class="col-lg-8 mt-5 mt-lg-0">
+                <form name="form1" action="#">
+                    <div class="row">
+                      <div class="col-md-6 form-group">
+                        <input type="text" name="name" class="form-control"  id="name" placeholder="Your Name" onkeypress="return test(event)"  >
+                        <span></span>
+                      </div>
+                      <div class="col-md-6 form-group mt-3 mt-md-0 form-group mt-3">
+                        <input type="email"  class="form-control" name="email" id="email" placeholder="Your Email"  >
+                        <span></span>
+                      </div>
+                      <div class="form-group mt-3">
+                          <input type="number" class="form-control"  name="number" id="number" placeholder="Your Mobile Number" maxlength="10"  >
+                          <span></span>
+                      </div>
+                      <div class="form-group mt-3">
+                        <input type="number" class="form-control"  name="age" id="age" placeholder="Your Age" max="30" min="18"  >
+                        <span></span>
+                    </div>
+                    <div class="form-group mt-3">
+                      <input type="password" class="form-control" name="pass1" id="pass1" placeholder="Create Password"  >
+                      <span></span>
+                    </div>
+                    <div class="form-group mt-3">
+                      <input type="password" class="form-control"  name="pass2" id="pass2" placeholder="Confirm Password" >
+                      <span></span>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <input type="text" name="state" class="form-control"  id="state" placeholder="Your State" onkeypress="return test(event)"  >
+                        <span></span>
+                      </div>
+                    <div class="form-group mt-3">
+                      <textarea  name="address" id="add" class="form-control" rows="5" placeholder="Address" ></textarea>
+                      <span></span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <textarea  name="branch" id="branch" class="form-control" rows="5" placeholder="Branch" ></textarea>
+                        <span></span>
+                      </div>
+                      <div class="form-group mt-3 ">
+                        <textarea  name="university_name" id="uniname" class="form-control" rows="5" placeholder="University Name" ></textarea>
+                        <span></span>
+                      </div>
+                    <div class="text-center">
+                        <button type="submit" onclick="buttonState()" class="form-button mt-3">
+                        Submit</button>
+                    </div>
+                    <div class="my-3"></div>
+                    <br>
+                    <br>
+                    <div class="text-center">
+                      <button type="reset"  class="form-button mt-3">
+                      Reset</button>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="text-center">
+                    <button type="submit" onclick="WriteCookie()" class="form-button mt-3">
+                    Cookies</button>
+                </div>
+                
+                  </form>
+                  <br>
+                  <br>
+                  <a href = "details.html" class="form-button mt-3" role="button" >Details</a>
+            </div>
+        </section>
+        </div>
+        <div class="marq">
+            <marquee direction = "right"><b><u>Admission Open For MBA.</u></b></marquee>
+        </div>
+    </body>
+</html>
