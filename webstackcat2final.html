@@ -27,7 +27,7 @@
 
         body {
             display: flex;
-            background: linear-gradient(135deg, #79d1ec, #058af7 );
+            background: linear-gradient(135deg, #a0ee0f, #058af7 );
         }
 
         header {
@@ -69,25 +69,29 @@
 
         #student {
             margin-left: 90px;
-            background-color: rgb(21, 78, 233);
+            background-color: chartreuse;
         }
 
         #student a {
             color: black;
+        }
+        #submit{
+            background-color: rgb(45, 22, 66);
+            color: white;
         }
 
         section {
             
             width: 50%;
             margin-top: 100px;
-            margin-left: -25%;
+            margin-left: 25%;
             padding: 20px;
             font-size: 3vh;
         }
     </style>
 </head>
 
-<body>
+<body onload="checkCookie()">
     <header>
         <div class="navbar">
             <ul>
@@ -173,6 +177,21 @@
                 <span></span>
             </div>
 
+            <div class="form-group">
+                <input type="submit" id="submit">
+                <br>
+                <br>
+            </div>
+
+            <table id="demo" border="1">
+                <tr>
+                    <th>stu-name</th>
+                    <th>stu-university</th>
+                    <th>stu-phone</th>
+                    <th>stu-email</th>
+                </tr>
+            </table>
+
         </form>
     </section>
 </body>
@@ -229,6 +248,69 @@
             span[8].style.color = "red";
         }
     }
+    function loadxmldoc(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function(){
+                if (this.readyState == 4 && this.status == 200){
+                    myFunction(this);
+                }
+            };
+            xmlhttp.open("GET","cat2final.xml",true);
+            xmlhttp.send();
+        }
 
+        function myFunction(xml){
+            var x, i, xmlDoc, table;
+            xmlDoc = xml.responseXML;
+            table = "<tr><th>place</th><th>price</th></tr>";
+            x = xmlDoc.getElementsByTagName("COMPUTER-SCIENCE")
+            for (i = 0; i < x.length; i++){
+                table += "<tr><td>"+
+                    x[i].getElementsByTagName("stu-name")[0].childNodes[0].nodeValue + "</td><td>"+ 
+                    x[i].getElementsByTagName("stu-university")[0].childNodes[0].nodeValue + "</td></tr>" +
+                    x[i].getElementsByTagName("stu-phone")[0].childNodes[0].nodeValue + "</td></tr>"+
+                    x[i].getElementsByTagName("stu-email")[0].childNodes[0].nodeValue + "</td></tr>";
+            }
+            document.getElementById("demo").innerHTML = table;
+        }
+
+
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function checkCookie() {
+            let user = getCookie("username");
+            if (user != "") {
+                alert("Welcome again " + user);
+            } else {
+                user = prompt("Please enter your good name:", "");
+                if (user != "" && user != null) {
+                    setCookie("username", user, 30);
+                }
+            }
+        }
+
+
+</script>
 
 </script>
